@@ -1,4 +1,5 @@
 const fs=require('fs')
+const chalk=require('chalk')
 const getNotes=function(){
     return "Kumail"
 }
@@ -17,12 +18,27 @@ const addNote=function(title,body){
         })
     
         saveNotes(notes)
-        console.log('Note is added')
+        console.log(chalk.bgGreen('Note is added'))
     }else{
-        console.log('Note is already taken!')
+        console.log(chalk.bgRed('Note is already taken!'))
     }
    
 
+}
+
+
+const removeNote=function(title){
+    const notes=loadAllNotes()
+    const filterArray=notes.filter(function(note){
+        return note.title !== title
+    })
+    if(filterArray.length !== notes.length){
+        saveNotes(filterArray)
+        console.log(chalk.bgGreen('Note removed!'))
+    }else{
+        console.log(chalk.bgRed('No Note Found!'))
+    }
+    
 }
 
 const saveNotes=function(notes){
@@ -45,5 +61,6 @@ const loadAllNotes=function(){
 
 module.exports={
     getNotes:getNotes,
-    addNote:addNote
+    addNote:addNote,
+    removeNote:removeNote
 }
