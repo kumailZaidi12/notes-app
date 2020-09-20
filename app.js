@@ -17,6 +17,9 @@ yargs.command({
             describe:'Note body',
             demandOption:true,
             type:'string'
+        },
+        att:{
+            describe:'att'
         }
     },
     handler:function(argv){
