@@ -43,10 +43,6 @@ const loadAllNotes=function(){
     }
 }
 
-
-
-
-
 module.exports={
     getNotes:getNotes,
     addNote:addNote
